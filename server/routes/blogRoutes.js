@@ -7,7 +7,17 @@ import addBlog, { addComment, deleteBlogByID, generateContent, getAllBlogs, getB
 // create express router
 const blogRouter = express.Router();
 // API endpoints
-blogRouter.post("/add", upload.single('image'), auth, addBlog);
+blogRouter.post(
+	"/add",
+	auth,
+	(req, res, next) => {
+		upload.single('image')(req, res, (err) => {
+			if (err) return res.status(400).json({ success: false, message: err.message });
+			next();
+		});
+	},
+	addBlog
+);
 blogRouter.get('/all', getAllBlogs); // get all blogs 
 blogRouter.get('/:blogId', getBlogByID);    
 blogRouter.post('/delete',auth, deleteBlogByID);    
