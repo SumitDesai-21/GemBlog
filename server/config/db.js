@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
-// mongoose ODM 
+    import mongoose from 'mongoose'
+    // mongoose ODM 
 // connecting mongoDB with backend
 
 const connectDB = async() =>{
@@ -8,7 +8,7 @@ const connectDB = async() =>{
         mongoose.connection.on('connected', ()=>{
             console.log('Database Connected.');  
         });
-        await mongoose.connect(`${process.env.MONGODB_URI}/GemBlog`)
+        await mongoose.connect(`${process.env.MONGODB_URI}`)
     }   
     catch(error){
         console.log('Failed to connect MongoDB Server.', error);
