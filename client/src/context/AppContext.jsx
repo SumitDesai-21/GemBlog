@@ -6,13 +6,14 @@ import toast from 'react-hot-toast';
     
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
+
 const AppContext = createContext();
 // for appcontext create provider function.
 
 export const AppProvider = ({ children })=>{
 
     const navigate = useNavigate();
-
+    
     // token for user Authentication
     const [token, setToken] = useState(null);
     const [blogs, setBlogs] = useState([]); 
