@@ -1,4 +1,4 @@
-import fs from "fs";
+
 import imagekit from "../config/imageKit.js";
 import Blog from "../models/Blog.js";
 import Comment from "../models/Comments.js";
@@ -32,8 +32,8 @@ const addBlog = async (req, res) => {
     // to store image on cloudestorage we'll use imageKit
     // imageKit => Image & video API
     // to upload image first convert it into base-64 image
-    const fileBuffer = fs.readFileSync(imageFile.path);
-    const base64File = fileBuffer.toString("base64");
+
+    const base64File = imageFile.buffer.toString("base64");
 
     const response = await imagekit.files.upload({
       file: base64File,
